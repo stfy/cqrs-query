@@ -22,11 +22,9 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "main": "projects/cqrs-query/src/test.ts",
-            "tsConfig": "projects/cqrs-query/tsconfig.spec.json",
-            "karmaConfig": "projects/cqrs-query/karma.conf.js"
+            "tsconfig": "<rootDir>/projects/cqrs-query/tsconfig.spec.json"
           }
         },
         "lint": {
@@ -42,6 +40,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "cqrs-query"
 }
