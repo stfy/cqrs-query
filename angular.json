@@ -2,5 +2,46 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "cqrs-query": {
+      "projectType": "library",
+      "root": "projects/cqrs-query",
+      "sourceRoot": "projects/cqrs-query/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/cqrs-query/tsconfig.lib.json",
+            "project": "projects/cqrs-query/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/cqrs-query/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/cqrs-query/src/test.ts",
+            "tsConfig": "projects/cqrs-query/tsconfig.spec.json",
+            "karmaConfig": "projects/cqrs-query/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/cqrs-query/tsconfig.lib.json",
+              "projects/cqrs-query/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "defaultProject": "cqrs-query"
 }
